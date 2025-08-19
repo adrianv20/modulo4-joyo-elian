@@ -1,5 +1,5 @@
 
-const API_KEY = import.meta.env.API_KEY ; // Demo key, reemplaza con tu propia key
+const API_KEY = import.meta.env.API_KEY  || "3ea665b"; // Demo key, reemplaza con tu propia key
 const BASE_URL = 'https://www.omdbapi.com/';
 
 export const movieService = {
