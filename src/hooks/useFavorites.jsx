@@ -35,13 +35,14 @@ export const useFavorites = () => {
     return favorites.some((fav) => fav.imdbID === movie.imdbID);
   };
 
-  /*  const clearFavorites = () => {
+  const clearFavorites = () => {
     setFavorites([]);
   };
- */
+
   return {
     favorites,
     toggleFavorite,
     isFavorite,
+    clearFavorites,
   };
 };

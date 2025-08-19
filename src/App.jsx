@@ -4,27 +4,28 @@ import MovieList from "./components/MovieList";
 import Favorites from "./components/Favorites";
 import { movieService } from "./services/movieService";
 import { useFavorites } from "./hooks/useFavorites";
+const recommendedTitles = [
+  "Avengers",
+  "Batman",
+  "Matrix",
+  "Inception",
+  "Interstellar",
+  "Star Wars",
+  "Harry Potter",
+  "Jurassic Park",
+  "Toy Story",
+  "Forrest Gump",
+  "Hercules",
+];
 
 function App() {
   const [movies, setMovies] = useState([]);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [hasSearched, setHasSearched] = useState(false);
-  const { favorites, toggleFavorite } = useFavorites();
+  const { favorites, toggleFavorite, clearFavorites } = useFavorites();
 
   const [recommended, setRecommended] = useState([]);
-  const recommendedTitles = [
-    "Avengers",
-    "Batman",
-    "Matrix",
-    "Inception",
-    "Interstellar",
-    "Star Wars",
-    "Harry Potter",
-    "Jurassic Park",
-    "Toy Story",
-    "Forrest Gump",
-  ];
 
   useEffect(() => {
     (async () => {
@@ -38,7 +39,7 @@ function App() {
         setRecommended([]);
       }
     })();
-  }, [recommendedTitles]);
+  }, []);
 
   const handleSearch = async (params) => {
     setLoading(true);
@@ -68,11 +69,7 @@ function App() {
         <SearchBar onSearch={handleSearch} isLoading={loading} />
       </header>
 
-      <main className="max-w-5xl px-4 mx-auto md:px-0">
-        <Favorites favorites={favorites} onToggleFavorite={toggleFavorite} />
-
-        {/* Películas recomendadas */}
-
+      <main className="max-w-7xl px-4 mx-auto md:px-0">
         {loading && (
           <div className="flex items-center justify-center py-8">
             <span className="w-8 h-8 mr-3 border-t-2 border-b-2 border-indigo-400 rounded-full animate-spin"></span>
@@ -93,7 +90,13 @@ function App() {
             favorites={favorites}
           />
         )}
+        <Favorites
+          favorites={favorites}
+          onToggleFavorite={toggleFavorite}
+          onClearFavorites={clearFavorites}
+        />
 
+        {/* Películas recomendadas */}
         <section className="mb-12">
           <h2 className="mb-6 text-2xl font-bold text-center text-indigo-400">
             Películas recomendadas
