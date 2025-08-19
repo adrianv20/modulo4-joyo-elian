@@ -64,7 +64,7 @@ function App() {
           <span role="img" aria-label="pelicula">
             🎬
           </span>{" "}
-          Buscador de Películas
+          MovieFinder
         </h1>
         <SearchBar onSearch={handleSearch} isLoading={loading} />
       </header>

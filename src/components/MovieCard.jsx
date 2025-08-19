@@ -13,7 +13,7 @@ const MovieCard = ({ movie, onToggleFavorite, isFavorite }) => {
 
   return (
     <div className="rounded-xl shadow-lg overflow-hidden flex flex-col h-full hover:scale-[1.03] transition-transform bg-slate-800">
-      <div className="flex items-center justify-center w-full h-72 ">
+      <div className="flex items-center justify-center w-full h-72 mt-8">
         <img
           src={posterUrl}
           alt={`${movie.Title} poster`}
